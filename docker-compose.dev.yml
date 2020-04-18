@@ -8,7 +8,11 @@ services:
     depends_on:
       - server
     environment:
-      - BASE_URL=http://server:3000
+      - BASE_URL=http://localhost:3000
+      - LETSENCRYPT_EMAIL=kian.peymani@gmail.com
+      - LETSENCRYPT_HOST=habitica.kianenigma.nl,www.habitica.kianenigma.nl
+      - VIRTUAL_HOST=habitica.kianenigma.nl,www.habitica.kianenigma.nl
+      - VIRTUAL_PORT=3000
     image: habitica
     networks:
       - habitica
@@ -41,6 +45,8 @@ services:
       - habitica
     ports:
       - "27017:27017"
+    volumes:
+      - /tmp/mongo:/data/db
 networks:
   habitica:
     driver: bridge
