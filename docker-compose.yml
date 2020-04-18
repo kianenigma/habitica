@@ -6,7 +6,7 @@ services:
     networks:
       - habitica
     environment:
-      - BASE_URL=http://server:3000
+      - BASE_URL=http://localhost:3000
     ports:
         - "8080:8080"
     command: ["npm", "run", "client:dev"]
@@ -26,6 +26,8 @@ services:
 
   mongo:
     image: mongo:3.6
+    volumes:
+      /opt/dockerfiles/mongo:/data/db
     ports:
       - "27017:27017"
     networks:
